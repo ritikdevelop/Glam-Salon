@@ -141,37 +141,3 @@
     font-size: 24px;
   }
 }
-
-/* Consistent gallery frames for photographs with different source dimensions. */
-.photo-gallery .photo-gallery-content {
-  flex-wrap: nowrap;
-  min-width: 0;
-}
-.photo-gallery .photo-gallery-item {
-  flex: 0 0 390px;
-  width: 390px;
-  max-width: none;
-}
-.photo-gallery .photo-gallery-item figure {
-  display: block;
-  height: 390px;
-  overflow: hidden;
-  border-radius: 50px 50px 50px 10px;
-}
-.photo-gallery .photo-gallery-item img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-@media (max-width: 767px) {
-  .photo-gallery .photo-gallery-item {
-    flex-basis: 240px;
-    width: 240px;
-  }
-  .photo-gallery .photo-gallery-item figure {
-    height: 240px;
-    border-radius: 30px 30px 30px 8px;
-  }
-}

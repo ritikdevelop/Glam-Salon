@@ -1,0 +1,544 @@
+/* Shared Glam brand and accessible interactions. Loaded after page styles. */
+:root {
+  --accent-color: #ffc0cb;
+  --accent-ink: #963b5b;
+  --brand-soft: #fff5f7;
+  --text-color: #595959;
+  --image-filter: none;
+  --transition:
+    color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease,
+    transform 0.18s ease;
+}
+html {
+  scroll-behavior: auto;
+}
+body {
+  background: #fff;
+}
+a,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: #ffc0cb55;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent-ink);
+  outline-offset: 4px;
+}
+[id] {
+  scroll-margin-top: 140px;
+}
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  z-index: 1000;
+  padding: 12px 20px;
+  background: #fff;
+  color: #222;
+  transform: translateY(-160%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+header.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+}
+header.main-header .header-sticky {
+  padding: 8px 0;
+  background: #fff;
+  border-bottom: 1px solid #f0dce2;
+}
+.navbar-brand {
+  flex-shrink: 0;
+}
+.navbar-brand img {
+  display: block;
+  width: 180px;
+  height: 104px;
+  object-fit: cover;
+}
+.main-menu ul li {
+  margin: 0 7px;
+}
+.main-menu ul li a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.main-menu ul li a:hover,
+.main-menu ul li a:focus,
+.main-menu ul li a[aria-current="page"] {
+  color: var(--accent-ink);
+}
+.main-menu ul li a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  text-decoration-color: var(--accent-color);
+  text-decoration-thickness: 2px;
+}
+.main-menu ul li.highlighted-menu a {
+  border-color: var(--accent-color);
+  z-index: 0;
+}
+.main-menu ul li.highlighted-menu a::before {
+  content: none;
+}
+.main-menu ul li.highlighted-menu a:hover,
+.main-menu ul li.highlighted-menu a:focus-visible {
+  background: var(--accent-color);
+  color: #222;
+}
+.menu-toggle {
+  display: none;
+  border: 1px solid var(--accent-color);
+  color: #222;
+  background: #fff;
+  border-radius: 24px;
+  padding: 10px 18px;
+  min-height: 44px;
+  gap: 12px;
+  align-items: center;
+}
+.btn-default,
+.home-page .btn-default,
+.pricing-page .btn-default,
+.hero-content-footer .btn-default,
+.pricing-cta .btn-default {
+  border-color: var(--accent-color);
+  min-height: 48px;
+}
+.btn-default::before {
+  content: none;
+}
+.btn-default:hover,
+.btn-default:focus-visible,
+.hero-content-footer .btn-default:hover,
+.pricing-cta .btn-default:hover {
+  background: var(--accent-color);
+  color: #222;
+}
+.hero {
+  padding: 60px 0 80px;
+}
+/*
+ * Page background rhythm: odd-numbered blocks carry the warm tint, even-numbered
+ * ones stay white. A page's banner counts as block 1, the same way the home page
+ * counts its hero.
+ *
+ *   home      1 hero*      2 ticker     3 services*     4 why        5 facts*    6 gallery
+ *   about     1 banner*    2 about      3 our goal*     4 our team   5 facts*    6 we use
+ *   services  1 hero*      2 directory  3 collections*  4 invitation (dark, left alone)
+ *   pricing   1 banner*    2 treatment list (left clean)
+ *   contact   1 banner*    2 info       3 get in touch* 4 map
+ *
+ * Scoped per page with a body class because the pages share section classes:
+ * .fun-facts is on both home and about, .page-header on about, pricing and contact.
+ */
+.home-page .hero,
+.home-page .home-services,
+.home-page .fun-facts,
+.about-page .page-header,
+.about-page .our-goal,
+.about-page .fun-facts,
+.pricing-page .page-header,
+.contact-page .page-header,
+.contact-page .get-in-touch {
+  background: #fff5ee;
+}
+
+/*
+ * Services paints its canvas white on <main class="salon-services">, and its
+ * collections sit in a max-width: 1240px container, where a tint local to the
+ * collection would leave white gutters on wide screens. Putting the tint on the
+ * canvas keeps every band full bleed, so the even-numbered directory opts back out
+ * into white instead.
+ */
+.services-page .salon-services,
+.services-page .salon-hero {
+  background: #fff5ee;
+}
+.services-page .salon-directory {
+  background: #fff;
+}
+.hero-content .section-title h1 {
+  font-size: clamp(40px, 4.6vw, 66px);
+  line-height: 1.1;
+  letter-spacing: -1.6px;
+}
+.hero-content .section-title h3 {
+  color: var(--accent-ink);
+}
+.section-title h3 {
+  padding-left: 22px;
+}
+.section-title h3::before {
+  width: 12px;
+  height: 12px;
+  left: 0;
+  top: 3px;
+  animation: none;
+}
+.about-year p,
+.about-year h4 {
+  color: #222;
+}
+.whyus-icon img,
+.goal-icon img {
+  filter: brightness(0);
+}
+.hero-content-body p {
+  font-size: 18px;
+  line-height: 1.75;
+}
+.hero-content-body ul li {
+  font-size: 16px;
+  padding: 10px 0;
+}
+.hero-content-footer {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.hero-content-footer .btn-default {
+  margin: 0;
+}
+.hero-image img {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.scroll-down {
+  border-color: var(--accent-ink);
+}
+.scroll-down span {
+  background: var(--accent-ink);
+}
+.reveal,
+.wow {
+  visibility: visible;
+}
+.reveal {
+  overflow: hidden;
+}
+.features-ticker {
+  border-block: 1px solid #f4e1e6;
+}
+.feature-ticker-content ul li {
+  white-space: nowrap;
+}
+.feature-ticker-box:hover .feature-ticker-content,
+.feature-ticker-box:focus-within .feature-ticker-content {
+  animation-play-state: paused;
+}
+/*
+ * The gallery drifts sideways by itself. Its two content tracks are identical,
+ * so moving one track plus one gap lands exactly on the other with no jump.
+ * Hovering or focusing pauses it; prefers-reduced-motion makes it scrollable.
+ */
+.photo-gallery-ticker {
+  overflow: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.photo-gallery-ticker::-webkit-scrollbar { display: none; }
+.photo-gallery .photo-gallery-content {
+  display: flex;
+  flex-wrap: nowrap;
+  /* Same gap the ticker puts between the two tracks, so the loop stays even. */
+  gap: var(--photo-gap);
+  width: max-content;
+  animation: photoscroll 40s linear infinite;
+}
+.photo-gallery-ticker:hover .photo-gallery-content,
+.photo-gallery-ticker:focus-within .photo-gallery-content {
+  animation-play-state: paused;
+}
+@keyframes photoscroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--photo-gap)));
+  }
+}
+/* One square frame per photo at every width, so portrait and landscape sources crop alike. */
+.photo-gallery .photo-gallery-item {
+  flex: 0 0 auto;
+  width: clamp(240px, 27vw, 390px);
+  max-width: none;
+  min-width: 0;
+}
+.photo-gallery .photo-gallery-item figure {
+  display: block;
+  height: auto;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50px 50px 50px 10px;
+}
+.photo-gallery .photo-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 767px) {
+  .photo-gallery .photo-gallery-item figure {
+    border-radius: 30px 30px 30px 8px;
+  }
+}
+.home-treatment {
+  transition:
+    border-color 0.18s,
+    box-shadow 0.18s;
+}
+.home-treatment:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 24px #4d27300c;
+}
+.home-treatment-link:hover,
+.home-treatment-link:focus-visible {
+  color: var(--accent-ink);
+}
+.page-header {
+  background: #fff;
+  border-bottom: 1px solid #f4e1e6;
+}
+.page-header-box h1,
+.page-header-box h2,
+.page-header-box .breadcrumb li,
+.page-header-box .breadcrumb li a,
+.page-header-box .breadcrumb-item + .breadcrumb-item::before {
+  color: #222;
+}
+.page-header-icon {
+  background: var(--accent-ink);
+}
+.salon-services {
+  --salon-ivory: #fff;
+  --salon-ink: #222;
+  --salon-line: #ecdde2;
+}
+.salon-hero {
+  background: #fff;
+  color: #222;
+}
+.salon-breadcrumb,
+.salon-hero-description {
+  color: #595959;
+}
+.salon-hero .salon-eyebrow,
+.salon-services h1 em {
+  color: var(--accent-ink);
+}
+.salon-invitation h2 em,
+.salon-invitation .salon-eyebrow {
+  color: var(--accent-color);
+}
+.salon-button {
+  background: #fff;
+  border: 2px solid var(--accent-color);
+  border-radius: 30px;
+  color: #222;
+}
+.salon-button:hover,
+.salon-button:focus-visible {
+  background: var(--accent-color);
+  color: #222;
+}
+.service-book:hover,
+.service-book:focus-visible,
+.service-price-link:hover,
+.service-price-link:focus-visible {
+  color: var(--accent-ink);
+}
+.service-book:hover span,
+.service-book:focus-visible span {
+  color: var(--accent-ink);
+  background: var(--brand-soft);
+  border-color: var(--accent-color);
+}
+.service-photo {
+  border-radius: 26px 26px 6px 26px;
+}
+.service-card-feature {
+  background: var(--brand-soft);
+  border-radius: 26px 26px 6px 26px;
+  overflow: hidden;
+}
+.henna-art-placeholder {
+  height: 100%;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--brand-soft);
+  color: var(--accent-ink);
+  font-family: Georgia, serif;
+  font-size: 32px;
+}
+.henna-art-placeholder span {
+  font-size: 70px;
+}
+.pricing-sidebar nav a:hover {
+  color: var(--accent-ink);
+}
+.treatment-heading,
+.pricing-design .pricing-list li {
+  border-bottom-color: var(--accent-color);
+}
+.contact-form {
+  padding: clamp(20px, 4vw, 40px);
+  border: 1px solid #efdce2;
+  border-radius: 28px 28px 8px 28px;
+}
+.contact-form label {
+  display: block;
+  color: #222;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.contact-form .form-control {
+  border-color: #cabdc1;
+  min-height: 48px;
+}
+.contact-form .form-control:focus {
+  border-color: var(--accent-ink);
+  box-shadow: 0 0 0 3px #ffc0cb55;
+}
+.contact-form .form-hint {
+  color: #595959;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 16px 0 0;
+}
+.contact-box p,
+.contact-info-item p {
+  overflow-wrap: anywhere;
+}
+.contact-box a {
+  color: var(--accent-ink);
+}
+.contact-info-item a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footer-social ul li a {
+  width: 44px;
+  height: 44px;
+}
+.footer-social ul li a:hover,
+.footer-social ul li a:focus-visible {
+  background: var(--accent-color);
+  color: #222;
+}
+.footer-menu ul li a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.footer-menu ul li a:hover {
+  color: var(--accent-color);
+}
+@media (max-width: 991px) {
+  .navbar-brand img {
+    width: 150px;
+    height: 88px;
+  }
+  .main-menu {
+    display: block;
+    flex-basis: 100%;
+  }
+  .main-menu ul {
+    align-items: stretch;
+    padding: 12px 0;
+  }
+  .main-menu ul li {
+    margin: 0;
+  }
+  .main-menu ul li a {
+    padding: 12px 16px !important;
+  }
+  .main-menu ul li.highlighted-menu {
+    margin-top: 8px;
+  }
+  .main-menu ul li.highlighted-menu a {
+    justify-content: center;
+  }
+  .nav-ready .main-menu {
+    display: none;
+  }
+  .nav-ready .main-menu.is-open {
+    display: block;
+    max-height: calc(100dvh - 110px);
+    overflow-y: auto;
+  }
+  .nav-ready .menu-toggle {
+    display: inline-flex;
+  }
+  .menu-toggle {
+    order: 0;
+  }
+  .main-menu {
+    order: 1;
+  }
+  .hero {
+    padding: 40px 0 70px;
+  }
+  .hero-content {
+    padding-right: 0;
+  }
+  .hero-image {
+    margin-top: 32px;
+  }
+  [id] {
+    scroll-margin-top: 112px;
+  }
+}
+@media (max-width: 575px) {
+  .hero-content-footer .btn-default {
+    flex: 1 1 150px;
+    text-align: center;
+    padding-inline: 18px;
+  }
+  .hero-content .section-title h1 {
+    letter-spacing: -1px;
+  }
+  .contact-form {
+    padding: 20px 16px;
+  }
+  .pricing-layout,
+  .pricing-intro,
+  .service-grid {
+    min-width: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .feature-ticker-box {
+    overflow-x: auto;
+  }
+  .photo-gallery-ticker {
+    overflow-x: auto;
+  }
+  /* With the drift stopped, the duplicate track is just a repeat to scroll past. */
+  .photo-gallery .photo-gallery-content[aria-hidden="true"] {
+    display: none;
+  }
+}
