@@ -1,0 +1,177 @@
+/* Home page preview of the current Glam service collection. */
+.home-treatment-grid {
+  row-gap: 30px;
+  margin-bottom: 40px;
+}
+.home-treatment-grid > div {
+  display: flex;
+}
+.home-treatment {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  border: 1px solid var(--divider-color);
+  border-radius: 36px 36px 8px 36px;
+}
+.home-treatment-photo {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.home-treatment-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+.home-treatment-photo:hover img {
+  transform: scale(1.04);
+}
+.home-treatment-copy {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 26px;
+}
+.home-treatment h3 {
+  font-size: 26px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.home-treatment a {
+  color: var(--primary-color);
+}
+.home-treatment p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #606060;
+  margin-bottom: 24px;
+}
+.home-treatment-link {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 17px;
+  border-top: 1px solid var(--divider-color);
+  font-size: 16px;
+  font-weight: 600;
+}
+.home-treatment-link span {
+  font-size: 21px;
+}
+.home-treatment a:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: -3px;
+}
+.home-treatment-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 575px) {
+  .home-treatment-copy {
+    padding: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-treatment-photo img {
+    transition: none;
+  }
+  .home-treatment-photo:hover img {
+    transform: none;
+  }
+}
+
+/* Featured treatment in the home page Why Choose Us section. */
+.home-featured-treatment {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 180px 180px 180px 30px;
+  color: white;
+}
+.home-featured-treatment > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.home-featured-caption {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 70px 38px 38px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+  color: white;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.home-featured-caption strong {
+  font-family: var(--accent-font);
+  font-size: 28px;
+  font-weight: 600;
+}
+.home-featured-caption > span:last-child {
+  font-size: 30px;
+}
+.home-featured-treatment:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 5px;
+}
+@media (max-width: 991px) {
+  .home-featured-treatment {
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 575px) {
+  .home-featured-treatment {
+    border-radius: 100px 100px 100px 24px;
+  }
+  .home-featured-caption {
+    padding: 65px 24px 26px;
+  }
+  .home-featured-caption strong {
+    font-size: 24px;
+  }
+}
+
+/* Consistent gallery frames for photographs with different source dimensions. */
+.photo-gallery .photo-gallery-content {
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+.photo-gallery .photo-gallery-item {
+  flex: 0 0 390px;
+  width: 390px;
+  max-width: none;
+}
+.photo-gallery .photo-gallery-item figure {
+  display: block;
+  height: 390px;
+  overflow: hidden;
+  border-radius: 50px 50px 50px 10px;
+}
+.photo-gallery .photo-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 767px) {
+  .photo-gallery .photo-gallery-item {
+    flex-basis: 240px;
+    width: 240px;
+  }
+  .photo-gallery .photo-gallery-item figure {
+    height: 240px;
+    border-radius: 30px 30px 30px 8px;
+  }
+}
