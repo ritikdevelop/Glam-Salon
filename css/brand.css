@@ -542,3 +542,50 @@ header.main-header .header-sticky {
     display: none;
   }
 }
+
+/*
+ * JS motion layer (js/animations.js). Everything here only tweaks what the
+ * scripts drive; with JavaScript off or reduced motion on, none of it applies.
+ */
+
+/* Heading line masks are applied inline by js/animations.js (SplitText line
+   elements), so nothing CSS-side is needed here. */
+
+/* Header hide/show: class toggled by ScrollTrigger, height stays reserved. */
+header.main-header.header-anim-ready {
+  transition: transform 0.4s ease;
+}
+header.main-header.header-anim-ready.header-hidden {
+  transform: translateY(-110%);
+}
+@media (prefers-reduced-motion: reduce) {
+  header.main-header.header-anim-ready {
+    transition: none;
+  }
+  header.main-header.header-anim-ready.header-hidden {
+    transform: none;
+  }
+}
+
+/* Magnetic buttons: brand.css transitions all properties; transform must be
+   owned by GSAP while hovered so the two don't fight. */
+.btn-default[data-anim-bound],
+.salon-button[data-anim-bound] {
+  will-change: transform;
+  transition:
+    color 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+/* GSAP-driven tickers: the CSS keyframe animation is replaced by tweened
+   transforms. Scroll-velocity tilt is skipped on touch/coarse pointers. */
+.gsap-ticker .feature-ticker-content,
+.gsap-ticker .photo-gallery-content {
+  animation: none;
+}
+@media (hover: none), (pointer: coarse) {
+  .gsap-ticker {
+    transform: none;
+  }
+}
